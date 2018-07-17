@@ -24,9 +24,10 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: '100%',
+    height: '75vh',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    maxHeight: '75vh'
   },
   title: {
     flexGrow: 1,

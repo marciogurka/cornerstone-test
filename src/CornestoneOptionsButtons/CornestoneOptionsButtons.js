@@ -53,7 +53,7 @@ export class CornestoneOptionsButtons extends React.Component {
           Elliptical ROI
         </Button>
         <Button variant="outlined" fullWidth={true} className={classes.button} onClick={this.clearImage}>
-          Clear Image
+          Clear Tools
         </Button>
         <Button variant="outlined" color="secondary" fullWidth={true} className={classes.button} onClick={this.resetImage}>
           Reset
@@ -63,12 +63,23 @@ export class CornestoneOptionsButtons extends React.Component {
   }
 
   componentDidMount(){
-    this.dicomImage = document.getElementById('corn-image');
+    window.addEventListener("resize", this.onResize);
+    window.addEventListener("orientationchange", this.onResize);
   }
 
   resetImage() {
     let element = document.getElementById('corn-image');
     cornerstone.reset(element);
+  }
+
+  onResize() {
+    let element = document.getElementById('corn-image');
+    let container = element.parentElement;
+    container.style.width = window.outerWidth;
+    container.style.maxHeight = window.outerHeight;
+    element.style.width = container.offsetWidth;
+    element.style.height = container.offsetHeight;
+    cornerstone.resize(element, true);
   }
 
   enableTool(toolName, mouseButtonNumber) {
