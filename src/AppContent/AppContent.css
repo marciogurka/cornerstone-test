@@ -8,3 +8,10 @@ AppContent {
 	align-items: baseline;
     justify-content: space-between;
 }
+
+.row-center {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+    justify-content: space-between;
+}

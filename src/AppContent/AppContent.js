@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { CornestoneImage } from '../CornestoneImage/CornestoneImage';
 import UploadImageButton from '../UploadImageButton/UploadImageButton';
+import FullScreenButton from '../FullScreenButton/FullScreenButton';
 import CornestoneOptionsButtons from '../CornestoneOptionsButtons/CornestoneOptionsButtons';
 import './AppContent.css';
 
@@ -26,7 +27,9 @@ const styles = theme => ({
     height: '100%'
   },
   title: {
+    flexGrow: 1,
     marginBottom: 16,
+    textAlign: 'left'
   }
 });
 
@@ -50,7 +53,10 @@ function AppContent(props) {
               <Typography variant="headline" component="h5" className={classes.title}>
                 Image
               </Typography>
-              <UploadImageButton/>
+              <div className="row-center">
+                <FullScreenButton/>
+                <UploadImageButton/>
+              </div>
             </div>
             <CornestoneImage/>
           </Paper>
