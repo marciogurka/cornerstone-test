@@ -22,6 +22,7 @@ export class CornestoneOptionsButtons extends React.Component {
     super(props);
     this.resetImage = this.resetImage.bind(this);
     this.enableTool = this.enableTool.bind(this);
+    this.clearImage = this.clearImage.bind(this);
   }
   dicomImage = null;
   componentWillMount() {
@@ -51,6 +52,9 @@ export class CornestoneOptionsButtons extends React.Component {
         <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool("ellipticalRoi", 1);}}>
           Elliptical ROI
         </Button>
+        <Button variant="outlined" fullWidth={true} className={classes.button} onClick={this.clearImage}>
+          Clear Image
+        </Button>
         <Button variant="outlined" color="secondary" fullWidth={true} className={classes.button} onClick={this.resetImage}>
           Reset
         </Button>
@@ -71,6 +75,17 @@ export class CornestoneOptionsButtons extends React.Component {
     this.disableAllTools();
     let element = document.getElementById('corn-image');
     cornerstoneTools[toolName].activate(element, mouseButtonNumber);
+  }
+
+  clearImage(toolName, mouseButtonNumber) {
+    this.disableAllTools();
+    let element = document.getElementById('corn-image');
+    cornerstoneTools.wwwc.activate(element, 2);
+    cornerstoneTools.pan.activate(element, 4);
+    let toolStateManager = cornerstoneTools.globalImageIdSpecificToolStateManager;
+    // Note that this only works on ImageId-specific tool state managers (for now)
+    toolStateManager.clear(element);
+    cornerstone.updateImage(element);
   }
   // helper function used by the tool button handlers to disable the active tool
   // before making a new tool active
