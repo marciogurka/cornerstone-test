@@ -69,6 +69,7 @@ export class CornestoneOptionsButtons extends React.Component {
 
   resetImage() {
     let element = document.getElementById('corn-image');
+    this.disableAllTools();
     cornerstone.reset(element);
   }
 
@@ -77,8 +78,17 @@ export class CornestoneOptionsButtons extends React.Component {
     let container = element.parentElement;
     container.style.width = window.outerWidth;
     container.style.maxHeight = window.outerHeight;
-    element.style.width = container.offsetWidth;
-    element.style.height = container.offsetHeight;
+    if (document.fullscreenElement || document.mozFullScreenElement ||
+        document.webkitFullscreenElement || document.msFullscreenElement) {
+          container.style.width = window.outerWidth;
+          container.style.maxHeight = window.outerHeight;
+          element.style.width = "100%";
+          element.style.height = "100%";
+    } else {
+      element.style.width = container.offsetWidth;
+      element.style.height = container.offsetHeight;
+      
+    }
     cornerstone.resize(element, true);
   }
 

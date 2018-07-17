@@ -3,3 +3,8 @@
     width: 100%;
     display: flex;
 }
+
+.cornerstone-canvas:fullscreen {
+	height: 100% !important;
+    width: 100% !important;
+}
