@@ -1,0 +1,10 @@
+AppContent {
+	padding-top: 10px;
+}
+
+.row-image-title {
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+    justify-content: space-between;
+}
