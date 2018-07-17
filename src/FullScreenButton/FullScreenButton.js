@@ -17,18 +17,21 @@ class FullScreenButton extends React.Component {
 	}
 
 	onClick() {		
-		let fullscreenDiv = document.querySelector(".cornerstone-canvas");
-		let fullscreenFunc = fullscreenDiv.requestFullscreen;
+		let element = document.querySelector(".cornerstone-canvas");
+		let fullscreenFunc = element.requestFullscreen;
 		if (!fullscreenFunc) {
 			['mozRequestFullScreen',
 			'msRequestFullscreen',
 			'webkitRequestFullScreen'].forEach((req) => {
-				if(fullscreenDiv)
-					fullscreenFunc = fullscreenFunc || fullscreenDiv[req];
+				if(element)
+					fullscreenFunc = fullscreenFunc || element[req];
 			});
 		}
 
-		fullscreenFunc.call(fullscreenDiv);
+		fullscreenFunc.call(element);
+		// set the canvas to 100% width/height
+		element.style.width = "100%";
+        element.style.height = "100%";
 	}
 
 }

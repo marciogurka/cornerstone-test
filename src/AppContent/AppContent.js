@@ -24,7 +24,9 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: '100%'
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column'
   },
   title: {
     flexGrow: 1,
@@ -42,11 +44,7 @@ export class AppContent extends React.Component {
         How to use it?
         </Typography>
         <Grid container spacing={24}>
-          <Grid item xs={3}>
-            <Paper className={classes.paper}>
-            <CornestoneOptionsButtons/>
-            </Paper>
-          </Grid>
+          
           <Grid item xs={9}>
             <Paper className={classes.dicomContainer}>
               <div className="row-image-title">
@@ -59,6 +57,11 @@ export class AppContent extends React.Component {
                 </div>
               </div>
               <CornestoneImage/>
+            </Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}>
+              <CornestoneOptionsButtons/>
             </Paper>
           </Grid>
         </Grid>
