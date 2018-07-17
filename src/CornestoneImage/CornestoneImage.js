@@ -3,10 +3,6 @@ import * as cornerstone from "cornerstone-core";
 import './CornestoneImage.css';
 
 export class CornestoneImage extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div id="corn-image" className="cornImage"></div>

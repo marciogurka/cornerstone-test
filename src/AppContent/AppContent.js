@@ -33,37 +33,38 @@ const styles = theme => ({
   }
 });
 
-function AppContent(props) {
-  const { classes } = props;
-
-  return (
-    <div className={classes.root}>
-      <Typography variant="headline" component="h1" className={classes.title}>
-           How to use it?
-      </Typography>
-      <Grid container spacing={24}>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>
+export class AppContent extends React.Component {
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <Typography variant="headline" component="h1" className={classes.title}>
+        How to use it?
+        </Typography>
+        <Grid container spacing={24}>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}>
             <CornestoneOptionsButtons/>
-          </Paper>
-        </Grid>
-        <Grid item xs={9}>
-          <Paper className={classes.dicomContainer}>
-            <div className="row-image-title">
-              <Typography variant="headline" component="h5" className={classes.title}>
+            </Paper>
+          </Grid>
+          <Grid item xs={9}>
+            <Paper className={classes.dicomContainer}>
+              <div className="row-image-title">
+                <Typography variant="headline" component="h5" className={classes.title}>
                 Image
-              </Typography>
-              <div className="row-center">
-                <FullScreenButton/>
-                <UploadImageButton/>
+                </Typography>
+                <div className="row-center">
+                  <FullScreenButton/>
+                  <UploadImageButton/>
+                </div>
               </div>
-            </div>
-            <CornestoneImage/>
-          </Paper>
+              <CornestoneImage/>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 AppContent.propTypes = {

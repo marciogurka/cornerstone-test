@@ -13,33 +13,35 @@ const styles = theme => ({
   }
 });
 
-function CornestoneOptionsButtons(props) {
-  const { classes } = props;
-  return (
-    <div>
-      <Typography variant="headline" component="h5" className={classes.title}>
-        Options
-      </Typography>
-      <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
-        Contrast
-      </Button>
-      <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
-        Pan
-      </Button>
-      <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
-        Zoom
-      </Button>
-      <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
-        Length
-      </Button>
-      <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
-        Elliptical ROI
-      </Button>
-      <Button variant="outlined" color="secondary" fullWidth={true} className={classes.button}>
-        Reset
-      </Button>
-    </div>
-  );
+export class CornestoneOptionsButtons extends React.Component {
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
+        <Typography variant="headline" component="h5" className={classes.title}>
+          Options
+        </Typography>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
+          Contrast
+        </Button>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
+          Pan
+        </Button>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
+          Zoom
+        </Button>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
+          Length
+        </Button>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button}>
+          Elliptical ROI
+        </Button>
+        <Button variant="outlined" color="secondary" fullWidth={true} className={classes.button}>
+          Reset
+        </Button>
+      </div>
+    );
+  }
 }
 
 CornestoneOptionsButtons.propTypes = {

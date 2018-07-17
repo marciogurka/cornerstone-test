@@ -17,24 +17,26 @@ const styles = {
   }
 };
 
-function AppToolbar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="primary">
-        <Toolbar>
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            Nico.lab's Frond-End Developer  Technical Assignment
-          </Typography>
-          <Tooltip title="Help">
-            <IconButton color="inherit" aria-label="Help">
-              <HelpIcon />
-            </IconButton>
-          </Tooltip>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+export class AppToolbar extends React.Component {
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="static" color="primary">
+          <Toolbar>
+            <Typography variant="title" color="inherit" className={classes.flex}>
+              Nico.lab's Frond-End Developer  Technical Assignment
+            </Typography>
+            <Tooltip title="Help">
+              <IconButton color="inherit" aria-label="Help">
+                <HelpIcon />
+              </IconButton>
+            </Tooltip>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
 AppToolbar.propTypes = {
