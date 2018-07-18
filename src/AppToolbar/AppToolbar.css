@@ -1,0 +1,10 @@
+.app-title {
+	flex-grow: 1;
+	font-size: 1.3125rem;
+}
+
+@media screen and (max-width: 615px) {
+	.app-title {
+		font-size: 1rem !important;
+	}
+}

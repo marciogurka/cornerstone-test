@@ -49,8 +49,8 @@ export class AppContent extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Grid container spacing={24}>
-          <Grid item xs={9}>
+        <Grid container spacing={24} className="app-container">
+          <Grid item xs={9} className="image-container">
             <Paper className={classes.dicomContainer}>
               <div className="row-image-title">
                 <Typography variant="headline" component="h5" className={classes.title}>
@@ -65,7 +65,7 @@ export class AppContent extends React.Component {
               <CornestoneImage/>
             </Paper>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={3} className="options-container">
             <Paper className={classes.paper}>
               <CornestoneOptionsButtons/>
             </Paper>

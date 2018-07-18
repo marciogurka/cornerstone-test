@@ -8,14 +8,12 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import HelpIcon from '@material-ui/icons/Help';
 import HelpDialog from '../HelpDialog/HelpDialog';
+import './AppToolbar.css';
 
 const styles = {
   root: {
     flexGrow: 1,
   },
-  flex: {
-    flexGrow: 1,
-  }
 };
 
 export class AppToolbar extends React.Component {
@@ -32,7 +30,7 @@ export class AppToolbar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" color="primary">
           <Toolbar>
-            <Typography variant="title" color="inherit" className={classes.flex}>
+            <Typography variant="title" color="inherit" className="app-title">
               Nico.lab's Frond-End Developer  Technical Assignment
             </Typography>
             <Tooltip title="Help">
