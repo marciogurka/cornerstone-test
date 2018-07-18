@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import { CornestoneImage } from '../CornestoneImage/CornestoneImage';
 import UploadImageButton from '../UploadImageButton/UploadImageButton';
 import FullScreenButton from '../FullScreenButton/FullScreenButton';
+import DownloadImageButton from '../DownloadImageButton/DownloadImageButton';
 import CornestoneOptionsButtons from '../CornestoneOptionsButtons/CornestoneOptionsButtons';
 import './AppContent.css';
 
@@ -40,7 +41,7 @@ export class AppContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fileName: ""
+      fileName: "Image"
     }
     this.onFileImageLoaded = this.onFileImageLoaded.bind(this);
   }
@@ -53,11 +54,12 @@ export class AppContent extends React.Component {
             <Paper className={classes.dicomContainer}>
               <div className="row-image-title">
                 <Typography variant="headline" component="h5" className={classes.title}>
-                Image{this.state.fileName}
+                {this.state.fileName}
                 </Typography>
                 <div className="row-center">
                   <FullScreenButton/>
                   <UploadImageButton onFileImageLoaded={this.onFileImageLoaded}/>
+                  <DownloadImageButton fileName={this.state.fileName}/>
                 </div>
               </div>
               <CornestoneImage/>
@@ -73,7 +75,7 @@ export class AppContent extends React.Component {
     );
   }
   onFileImageLoaded(fileName) {
-    this.setState({fileName: `: ${fileName}`});
+    this.setState({fileName: `Image: ${fileName}`});
   }
 }
 

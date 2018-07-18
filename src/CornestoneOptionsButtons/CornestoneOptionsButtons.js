@@ -24,7 +24,6 @@ export class CornestoneOptionsButtons extends React.Component {
     this.enableTool = this.enableTool.bind(this);
     this.clearImage = this.clearImage.bind(this);
   }
-  dicomImage = null;
   componentWillMount() {
     cornerstoneTools.external.cornerstone = cornerstone;
     cornerstoneTools.external.Hammer = Hammer;

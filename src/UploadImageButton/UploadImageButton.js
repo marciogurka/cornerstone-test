@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import * as cornerstone from "cornerstone-core";
@@ -13,9 +14,6 @@ import SnackbarContent from '@material-ui/core/SnackbarContent';
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
-  },
-  rightIcon: {
-    marginLeft: theme.spacing.unit,
   },
   input: {
     display: 'none',
@@ -60,10 +58,11 @@ export class UploadImageButton extends React.Component {
           onChange={this.sendFile}
         />
         <label htmlFor="dicom-image-file">
-          <Button variant="contained" color="default" component="span" className={classes.button}>
-            Upload Image
-            <CloudUploadIcon className={classes.rightIcon} />
-          </Button>
+          <Tooltip title="Upload Image">
+            <Button variant="contained" color="default" component="span" className={classes.button} aria-label="Upload Image">
+              <CloudUploadIcon/>
+            </Button>
+          </Tooltip>
         </label>
         <Snackbar
           anchorOrigin={{

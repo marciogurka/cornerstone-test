@@ -32,27 +32,27 @@ class HelpDialog extends React.Component {
 						<List dense={true}>
 			                <ListItem>
 			                    <ListItemText
-			                      primary="WW/WC - Adjust the window width and window center of the image (activated by default)"
+			                      primary="WW/WC - Adjust the window width and window center of the image (activated by default)."
 			                    />
 			                </ListItem>
 			                <ListItem>
 			                    <ListItemText
-			                      primary="Pan - Pan the image"
+			                      primary="Pan - Pan the image."
 			                    />
 			                </ListItem>
 			                <ListItem>
 			                    <ListItemText
-			                      primary="Zoom - Zoom the image"
+			                      primary="Zoom - Zoom the image."
 			                    />
 			                </ListItem>
 			                <ListItem>
 			                    <ListItemText
-			                      primary="Length - Length measurement tool"
+			                      primary="Length - Length measurement tool."
 			                    />
 			                </ListItem>
 			                <ListItem>
 			                    <ListItemText
-			                      primary="Elliptical ROI - An elliptical ROI that shows mean, stddev and area"
+			                      primary="Elliptical ROI - An elliptical ROI that shows mean, stddev and area."
 			                    />
 			                </ListItem>
 			            </List>
@@ -62,25 +62,28 @@ class HelpDialog extends React.Component {
 						<List dense={true}>
 			                <ListItem>
 			                    <ListItemText
-			                      primary="Pan by dragging the middle mouse button"
+			                      primary="Pan by dragging the middle mouse button."
 			                    />
 			                </ListItem>
 			                <ListItem>
 			                    <ListItemText
-			                      primary="Zoom by dragging the right mouse button"
+			                      primary="Zoom by dragging the right mouse button."
 			                    />
 			                </ListItem>
 			                <ListItem>
 			                    <ListItemText
-			                      primary="Zoom by rolling the mouse wheel"
+			                      primary="Zoom by rolling the mouse wheel."
 			                    />
 			                </ListItem>
 			            </List>
 			            <Typography variant="body1" gutterBottom>
-							Clear tools option remove all the marks that you wrote on the image
+							Clear tools option remove all the marks that you wrote on the image.
 					    </Typography>
 					    <Typography variant="body1" gutterBottom>
-							Reset option remove all the changes that you made in the image
+							Reset option remove all the changes that you made in the image.
+					    </Typography>
+					    <Typography variant="body1" gutterBottom>
+							You can also upload a custom <strong>DICOM</strong> file and save it as a PNG image.
 					    </Typography>
 				</DialogContent>
 				<DialogActions>
