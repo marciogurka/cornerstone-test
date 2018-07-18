@@ -1,6 +1,17 @@
 .app-title {
 	flex-grow: 1;
 	font-size: 1.3125rem;
+	display: flex !important;
+    align-items: center;
+}
+
+.app-title a {
+	display: flex;
+}
+
+.octicon {
+	fill: #fff;
+    padding-left: 10px;
 }
 
 @media screen and (max-width: 615px) {

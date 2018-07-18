@@ -11,7 +11,7 @@ export class AppFooter extends React.Component {
           Made with
           <FavoriteIcon className="heart"/>
           by 
-          <a href="http://marciogurka.com" target="_blank" class="profile-link">Márcio Gurka</a>
+          <a href="http://marciogurka.com" target="_blank" rel="noopener noreferrer" class="profile-link">Márcio Gurka</a>
         </Typography>
       </footer>
     );
