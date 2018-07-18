@@ -25,16 +25,12 @@ const styles = theme => ({
   },
 });
 
-cornerstone.events.addEventListener('cornerstoneimageloadprogress', (event) => {
-        const eventData = event.detail;
-        console.log(`Image Load Progress: ${eventData.percentComplete}%`)
-    });
-
 export class UploadImageButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
+      onFileImageLoaded: (file) => {}
     };
     this.sendFile = this.sendFile.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -90,15 +86,16 @@ export class UploadImageButton extends React.Component {
   sendFile(e) {
     const file = e.target.files[0];
     const imageId = cornerstoneWADOImageLoader.wadouri.fileManager.add(file);
-    this.loadAndViewImage(imageId);
+    this.loadAndViewImage(imageId, file.name);
   }
   handleClose(event, reason) {
     this.setState({ open: false });
   }
-  loadAndViewImage(imageId) {
+  loadAndViewImage(imageId, fileName) {
         const element = document.getElementById('corn-image');
         cornerstone.enable(element);
-        cornerstone.loadImage(imageId).then(function(image) {
+        cornerstone.loadImage(imageId).then((image) => {
+            this.props.onFileImageLoaded(fileName);
             const viewport = cornerstone.getDefaultViewportForImage(element, image);
             cornerstone.displayImage(element, image, viewport);
             element.style.width = "100%";

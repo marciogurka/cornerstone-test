@@ -37,21 +37,27 @@ const styles = theme => ({
 });
 
 export class AppContent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileName: ""
+    }
+    this.onFileImageLoaded = this.onFileImageLoaded.bind(this);
+  }
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
-          
           <Grid item xs={9}>
             <Paper className={classes.dicomContainer}>
               <div className="row-image-title">
                 <Typography variant="headline" component="h5" className={classes.title}>
-                Image
+                Image{this.state.fileName}
                 </Typography>
                 <div className="row-center">
                   <FullScreenButton/>
-                  <UploadImageButton/>
+                  <UploadImageButton onFileImageLoaded={this.onFileImageLoaded}/>
                 </div>
               </div>
               <CornestoneImage/>
@@ -65,6 +71,9 @@ export class AppContent extends React.Component {
         </Grid>
       </div>
     );
+  }
+  onFileImageLoaded(fileName) {
+    this.setState({fileName: `: ${fileName}`});
   }
 }
 
