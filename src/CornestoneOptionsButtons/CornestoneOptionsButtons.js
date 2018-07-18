@@ -7,6 +7,7 @@ import * as cornerstone from "cornerstone-core";
 import * as cornerstoneTools from 'cornerstone-tools';
 import * as cornerstoneMath from "cornerstone-math";
 import Hammer from 'hammerjs';  
+import Helper from '../Helper';
 
 const styles = theme => ({
   button: {
@@ -17,12 +18,43 @@ const styles = theme => ({
   }
 });
 
+const helper = new Helper();
+
+const ToolType = {
+  ['wwwc']: {
+    browserName: 'wwwc',
+    mobileName: 'wwwcTouchDrag',
+    mouseButton: 1
+  },
+  ['pan']: {
+    browserName: 'pan',
+    mobileName: 'panTouchDrag',
+    mouseButton: 3
+  },
+  ['zoom']: {
+    browserName: 'zoom',
+    mobileName: 'zoomTouchDrag',
+    mouseButton: 5
+  },
+  ['length']: {
+    browserName: 'length',
+    mobileName: 'lengthTouch',
+    mouseButton: 1
+  },
+  ['ellipticalRoi']: {
+    browserName: 'ellipticalRoi',
+    mobileName: 'ellipticalRoiTouch',
+    mouseButton: 1
+  },
+}
+
 export class CornestoneOptionsButtons extends React.Component {
   constructor(props) {
     super(props);
     this.resetImage = this.resetImage.bind(this);
     this.enableTool = this.enableTool.bind(this);
     this.clearImage = this.clearImage.bind(this);
+
   }
   componentWillMount() {
     cornerstoneTools.external.cornerstone = cornerstone;
@@ -36,19 +68,19 @@ export class CornestoneOptionsButtons extends React.Component {
         <Typography variant="headline" component="h5" className={classes.title}>
           Options
         </Typography>
-        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool("wwwc", 1);}}>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool(ToolType['wwwc']);}}>
           Contrast
         </Button>
-        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool("pan", 3);}}>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool(ToolType['pan']);}}>
           Pan
         </Button>
-        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool("zoom", 5);}}>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool(ToolType['zoom']);}}>
           Zoom
         </Button>
-        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool("length", 1);}}>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool(ToolType['length']);}}>
           Length
         </Button>
-        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool("ellipticalRoi", 1);}}>
+        <Button variant="outlined" color="primary" fullWidth={true} className={classes.button} onClick={() => {this.enableTool(ToolType['ellipticalRoi']);}}>
           Elliptical ROI
         </Button>
         <Button variant="outlined" fullWidth={true} className={classes.button} onClick={this.clearImage}>
@@ -68,7 +100,7 @@ export class CornestoneOptionsButtons extends React.Component {
 
   resetImage() {
     let element = document.getElementById('corn-image');
-    this.disableAllTools();
+    helper.desactivateTools(element);
     cornerstone.reset(element);
   }
 
@@ -91,38 +123,24 @@ export class CornestoneOptionsButtons extends React.Component {
     cornerstone.resize(element, true);
   }
 
-  enableTool(toolName, mouseButtonNumber) {
-    this.disableAllTools();
+  enableTool(toolNameOption) {
     let element = document.getElementById('corn-image');
-    cornerstoneTools[toolName].activate(element, mouseButtonNumber);
+    helper.activateTool(toolNameOption, element);
   }
 
-  clearImage(toolName, mouseButtonNumber) {
-    this.disableAllTools();
+  clearImage() {
     let element = document.getElementById('corn-image');
-    cornerstoneTools.wwwc.activate(element, 2);
-    cornerstoneTools.pan.activate(element, 4);
+    helper.desactivateTools(element);
     let toolStateManager = cornerstoneTools.globalImageIdSpecificToolStateManager;
     // Note that this only works on ImageId-specific tool state managers (for now)
     toolStateManager.clear(element);
     cornerstone.updateImage(element);
-  }
-  // helper function used by the tool button handlers to disable the active tool
-  // before making a new tool active
-  disableAllTools() {
-    let element = document.getElementById('corn-image');
-    if(element) {  
-      cornerstoneTools.wwwc.disable(element);
-      cornerstoneTools.pan.activate(element, 2); // 2 is middle mouse button
-      cornerstoneTools.zoom.activate(element, 4); // 4 is right mouse button
-      cornerstoneTools.length.deactivate(element, 1);
-      cornerstoneTools.ellipticalRoi.deactivate(element, 1);
-    }
   }
 }
 
 CornestoneOptionsButtons.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 
 export default withStyles(styles)(CornestoneOptionsButtons);

@@ -4,6 +4,9 @@ import * as cornerstoneTools from 'cornerstone-tools';
 import * as cornerstoneMath from "cornerstone-math";
 import Hammer from 'hammerjs';  
 import './CornestoneImage.css';
+import Helper from '../Helper';
+
+const helper = new Helper();
 
 export class CornestoneImage extends React.Component {
   componentWillMount() {
@@ -84,12 +87,7 @@ export class CornestoneImage extends React.Component {
         cornerstone.displayImage(element, image);
         element.style.width = "100%";
         element.style.height = "100%";
-        cornerstoneTools.mouseInput.enable(element);
-        cornerstoneTools.mouseWheelInput.enable(element);
-        cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
-        cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
-        cornerstoneTools.zoom.activate(element, 4); // zoom is the default tool for right mouse button
-        cornerstoneTools.zoomWheel.activate(element); // zoom is the default tool for middle mouse wheel
+        helper.activateDefaultTools(element);
     });
 
   }

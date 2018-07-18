@@ -5,11 +5,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import * as cornerstone from "cornerstone-core";
-import * as cornerstoneTools from 'cornerstone-tools';
 import * as dicomParser from 'dicom-parser';
 import * as cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
+import Helper from '../Helper';
 
 const styles = theme => ({
   button: {
@@ -22,6 +22,8 @@ const styles = theme => ({
     margin: theme.spacing.unit,
   },
 });
+
+const helper = new Helper();
 
 export class UploadImageButton extends React.Component {
   constructor(props) {
@@ -99,12 +101,7 @@ export class UploadImageButton extends React.Component {
             cornerstone.displayImage(element, image, viewport);
             element.style.width = "100%";
             element.style.height = "100%";
-            cornerstoneTools.mouseInput.enable(element);
-            cornerstoneTools.mouseWheelInput.enable(element);
-            cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
-            cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
-            cornerstoneTools.zoom.activate(element, 4); // zoom is the default tool for right mouse button
-            cornerstoneTools.zoomWheel.activate(element); // zoom is the default tool for middle mouse wheel
+            helper.activateDefaultTools(element);
         }, (err) => {
             this.setState({open: true});
             console.error(err);
