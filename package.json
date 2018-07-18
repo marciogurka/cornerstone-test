@@ -1,5 +1,5 @@
 {
-  "name": "cornerstone-test",
+  "name": "react-cornerstone-app",
   "version": "1.1.0",
   "private": true,
   "author": {
@@ -7,9 +7,9 @@
     "email": "marciogurka@gmail.com",
     "url": "https://marciogurka.com"
   },
-  "description": "Rails-inspired generator system that provides scaffolding for your apps",
-  "homepage": "https://marciogurka.github.io/cornerstone-test",
-  "bugs": "https://github.com/marciogurka/cornerstone-test/issues",
+  "description": "React application using CornestoneJS library",
+  "homepage": "https://marciogurka.github.io/react-cornerstone-app",
+  "bugs": "https://github.com/marciogurka/react-cornerstone-app/issues",
   "dependencies": {
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.1.0",
@@ -33,7 +33,7 @@
     "deploy": "npm run build&&gh-pages -d build"
   },
   "licence": "MIT",
-  "repository": "marciogurka/cornerstone-test",
+  "repository": "marciogurka/react-cornerstone-app",
   "devDependencies": {
     "gh-pages": "^1.2.0"
   }
