@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import AppToolbar from './AppToolbar/AppToolbar';
 import AppContent from './AppContent/AppContent';
+import AppFooter from './AppFooter/AppFooter';
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
       <div className='parent'>
         <AppToolbar/>
         <AppContent/>
+        <AppFooter/>
       </div>
     );
   }
