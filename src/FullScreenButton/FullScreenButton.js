@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Fullscreen from '@material-ui/icons/Fullscreen';
+import Tooltip from '@material-ui/core/Tooltip';
 
 class FullScreenButton extends React.Component {
 	constructor(props) {
@@ -10,9 +11,11 @@ class FullScreenButton extends React.Component {
 
 	render() {
 	    return (
-	      	<Button color="default" onClick={this.onClick}>
-				<Fullscreen />
-			</Button>
+	    	<Tooltip title="Fullscreen">
+		      	<Button color="default" onClick={this.onClick} aria-label="Fullscreen">
+					<Fullscreen />
+				</Button>
+			</Tooltip>
 		);
 	}
 

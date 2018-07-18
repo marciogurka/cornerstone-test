@@ -41,9 +41,6 @@ export class AppContent extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Typography variant="headline" component="h1" className={classes.title}>
-        How to use it?
-        </Typography>
         <Grid container spacing={24}>
           
           <Grid item xs={9}>

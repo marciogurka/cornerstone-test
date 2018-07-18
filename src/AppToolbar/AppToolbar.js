@@ -7,6 +7,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import HelpIcon from '@material-ui/icons/Help';
+import HelpDialog from '../HelpDialog/HelpDialog';
 
 const styles = {
   root: {
@@ -18,6 +19,13 @@ const styles = {
 };
 
 export class AppToolbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      openDialog: false
+    }
+    this.handleClose = this.handleClose.bind(this);
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -28,14 +36,20 @@ export class AppToolbar extends React.Component {
               Nico.lab's Frond-End Developer  Technical Assignment
             </Typography>
             <Tooltip title="Help">
-              <IconButton color="inherit" aria-label="Help">
+              <IconButton color="inherit" aria-label="Help" onClick={() => {this.setState({openDialog: true})}}>
                 <HelpIcon />
               </IconButton>
             </Tooltip>
           </Toolbar>
         </AppBar>
+        <HelpDialog openDialog={this.state.openDialog} handleClose={this.handleClose}/>
       </div>
     );
+  }
+  handleClose() {
+    this.setState({
+      openDialog: false
+    });
   }
 }
 
