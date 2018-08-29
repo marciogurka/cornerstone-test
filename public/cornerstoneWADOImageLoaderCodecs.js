@@ -592,7 +592,7 @@ var JpegImage = (function jpegImage() {
         xhr.open("GET", path, true);
         xhr.responseType = "arraybuffer";
         xhr.onload = (function () {
-          // TODO catch parse error
+          // TODO:0 catch parse error
           var data = new Uint8Array(xhr.response);
           handleData(data);
         }).bind(this);
@@ -682,7 +682,7 @@ var JpegImage = (function jpegImage() {
                 };
               }
             }
-            // TODO APP1 - Exif
+            // TODO:10 APP1 - Exif
             if (fileMarker === 0xFFEE) {
               if (appData[0] === 0x41 && appData[1] === 0x64 && appData[2] === 0x6F &&
                 appData[3] === 0x62 && appData[4] === 0x65 && appData[5] === 0) { // 'Adobe\x00'
